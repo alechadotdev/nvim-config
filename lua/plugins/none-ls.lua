@@ -15,6 +15,9 @@ return {
                 null_ls.builtins.diagnostics.flake8,
                 null_ls.builtins.diagnostics.pylint,
                 null_ls.builtins.diagnostics.mypy,
+                -- Bash
+                null_ls.builtins.formatting.shfmt,
+                null_ls.builtins.diagnostics.shellcheck
             },
         })
         vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
