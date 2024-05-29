@@ -7,6 +7,29 @@ return {
 		"MunifTanjim/nui.nvim",
 	},
 	config = function()
-		vim.keymap.set("n", "<C-n>", ":Neotree filesystem reveal right<CR>")
+        require("neo-tree").setup({
+            close_if_last_window = true,
+            filesystem = {
+                hide_dotfiles = false
+            },
+            window = {
+                position = "right"
+            },
+            sources = {
+                "filesystem",
+                "buffers",
+                "git_status",
+                "document_symbols",
+            },
+            source_selector = {
+                winbar = true,
+                sources = {
+                    { source = "filesystem" },
+                    { source = "document_symbols" },
+                    { source = "git_status" }
+                }
+            }
+        })
+		vim.keymap.set("n", "<leader>e", ":Neotree toggle<CR>")
 	end,
 }
