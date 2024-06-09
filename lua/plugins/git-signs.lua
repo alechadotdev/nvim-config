@@ -1,7 +1,7 @@
 return {
-	"lewis6991/gitsigns.nvim",
-	config = function()
-		require("gitsigns").setup({
+    "lewis6991/gitsigns.nvim",
+    config = function()
+        require("gitsigns").setup({
             signs = {
                 add = { text = "█" },
                 change = { text = "█" },
@@ -12,7 +12,7 @@ return {
             },
             current_line_blame_opts = {
                 delay = 500,
-            }
+            },
         })
-	end,
+    end,
 }

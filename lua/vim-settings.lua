@@ -35,20 +35,67 @@ vim.keymap.set("n", "<leader>w", ":w<CR>")
 vim.keymap.set("n", "<leader>q", ":q<CR>")
 
 -- disable search highlights
-vim.keymap.set("n", "<leader>h", ":nohlsearch<CR>")
+vim.keymap.set("n", "<leader>h", ":nohlsearch<CR>", { desc = "Clear highlights" })
 
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
 
+vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, { desc = "Format current buffer" })
+vim.keymap.set("n", "<leader>e", ":Neotree toggle<CR>", { desc = "Toggle Neotree" })
+vim.keymap.set("n", "<leader>a", "<cmd>AerialToggle<cr>", { desc = "Aerial (Symbols)" })
+
+vim.keymap.set("n", "<leader>bc", "<Cmd>BufferLineCloseOthers<CR>", { desc = "Delete other buffers" })
+vim.keymap.set("n", "<S-h>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
+vim.keymap.set("n", "<S-l>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
+vim.keymap.set("n", "[b", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
+vim.keymap.set("n", "]b", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
+vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Show docs from LSP" })
+vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
+vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "Show code actions" })
+vim.keymap.set(
+    "n",
+    "<leader>xx",
+    "<cmd>TroubleToggle document_diagnostics<cr>",
+    { desc = "Document Diagnostics (Trouble)" }
+)
+vim.keymap.set(
+    "n",
+    "<leader>xX",
+    "<cmd>TroubleToggle workspace_diagnostics<cr>",
+    { desc = "Workspace Diagnostics (Trouble)" }
+)
+-- Trouble
+vim.keymap.set("n", "[q", function()
+    if require("trouble").is_open() then
+        require("trouble").previous({ skip_groups = true, jump = true })
+    else
+        local ok, err = pcall(vim.cmd.cprev)
+        if not ok then
+            vim.notify(err, vim.log.levels.ERROR)
+        end
+    end
+end, { desc = "Previous trouble/quickfix item" })
+vim.keymap.set("n", "]q", function()
+    if require("trouble").is_open() then
+        require("trouble").next({ skip_groups = true, jump = true })
+    else
+        local ok, err = pcall(vim.cmd.cnext)
+        if not ok then
+            vim.notify(err, vim.log.levels.ERROR)
+        end
+    end
+end, {
+    desc = "Next trouble/quickfix item",
+})
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {
-	callback = function()
-		vim.highlight.on_yank()
-	end,
-	group = highlight_group,
-	pattern = "*",
+    callback = function()
+        vim.highlight.on_yank()
+    end,
+    group = highlight_group,
+    pattern = "*",
 })

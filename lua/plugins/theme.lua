@@ -8,15 +8,15 @@ local catppuccin = {
 }
 
 local rosepine = {
-	"rose-pine/neovim",
-	priority = 1000,
-	name = "rose-pine",
-	config = function()
-		require("rose-pine").setup({
-			disable_background = true,
-		})
-		vim.cmd("colorscheme rose-pine")
-	end,
+    "rose-pine/neovim",
+    priority = 1000,
+    name = "rose-pine",
+    config = function()
+        require("rose-pine").setup({
+            disable_background = true,
+        })
+        vim.cmd("colorscheme rose-pine")
+    end,
 }
 
 local gruvbox_baby = {
@@ -32,7 +32,7 @@ local gruvbox_baby = {
 local nightfox = {
     "EdenEast/nightfox.nvim",
     priority = 1000,
-    name = "nightfox"
+    name = "nightfox",
 }
 
-return {catppuccin, rosepine, gruvbox_baby, nightfox}
+return { catppuccin, rosepine, gruvbox_baby, nightfox }
