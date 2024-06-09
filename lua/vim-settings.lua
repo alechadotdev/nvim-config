@@ -27,6 +27,9 @@ vim.o.completeopt = "menuone,noselect"
 
 vim.o.termguicolors = true
 
+-- highlight current line
+vim.o.cursorline = true
+
 -- save and close files with leader
 vim.keymap.set("n", "<leader>w", ":w<CR>")
 vim.keymap.set("n", "<leader>q", ":q<CR>")
