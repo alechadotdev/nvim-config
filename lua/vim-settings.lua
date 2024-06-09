@@ -1,5 +1,6 @@
 vim.g.mapleader = " "
 vim.wo.relativenumber = true
+vim.wo.number = true
 vim.o.expandtab = true
 -- set tab width, to automatically detect with use "tpope/vim-sleuth"
 vim.o.tabstop = 4
@@ -89,6 +90,11 @@ vim.keymap.set("n", "]q", function()
 end, {
     desc = "Next trouble/quickfix item",
 })
+
+vim.keymap.set("n", "<leader>gh", "<cmd>Gitsigns preview_hunk_inline<cr>", { desc = "Show hunk preview" })
+vim.keymap.set("n", "<leader>gb", "<cmd>Gitsigns toggle_current_line_blame<CR>", { desc = "Toggle current line blame" })
+vim.keymap.set("n", "<leader>gg", "<cmd>Neotree toggle git_status <cr>", { desc = "Toggle git status using Neotree" })
+
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
