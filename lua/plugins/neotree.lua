@@ -11,20 +11,19 @@ return {
             close_if_last_window = true,
             filesystem = {
                 filtered_items = {
-                    hide_dotfiles = false,
+                    hide_dotfiles = true,
                 },
             },
             window = {
-                position = "right",
+                position = "left",
             },
             sources = {
                 "filesystem",
                 "buffers",
                 "git_status",
-                "document_symbols",
             },
             source_selector = {
-                winbar = true,
+                winbar = false,
                 sources = {
                     { source = "filesystem" },
                     { source = "document_symbols" },

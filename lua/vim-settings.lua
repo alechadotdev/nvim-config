@@ -44,7 +44,7 @@ vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open float
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
 
 vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, { desc = "Format current buffer" })
-vim.keymap.set("n", "<leader>e", ":Neotree toggle<CR>", { desc = "Toggle Neotree" })
+vim.keymap.set("n", "<leader>E", ":Neotree toggle<CR>", { desc = "Toggle Neotree" })
 vim.keymap.set("n", "<leader>a", "<cmd>AerialToggle<cr>", { desc = "Aerial (Symbols)" })
 
 vim.keymap.set("n", "<leader>bc", "<Cmd>BufferLineCloseOthers<CR>", { desc = "Delete other buffers" })
@@ -91,9 +91,14 @@ end, {
     desc = "Next trouble/quickfix item",
 })
 
-vim.keymap.set("n", "<leader>gh", "<cmd>Gitsigns preview_hunk_inline<cr>", { desc = "Show hunk preview" })
-vim.keymap.set("n", "<leader>gb", "<cmd>Gitsigns toggle_current_line_blame<CR>", { desc = "Toggle current line blame" })
-vim.keymap.set("n", "<leader>gg", "<cmd>Neotree toggle git_status <cr>", { desc = "Toggle git status using Neotree" })
+-- Gitsigns
+vim.keymap.set("n", "]H", "<cmd>Gitsigns nav_hunk last<CR>", { desc = "Last hunk" })
+vim.keymap.set("n", "[h", "<cmd>Gitsigns nav_hunk first<CR>", { desc = "First hunk" })
+vim.keymap.set({"n", "v"}, "<leader>ghs", "<cmd>Gitsigns stage_hunk<CR>", { desc = "Stage hunk" })
+vim.keymap.set({"n", "v"}, "<leader>ghr", "<cmd>Gitsigns reset_hunk<CR>", { desc = "Reset hunk" })
+vim.keymap.set("n", "<leader>ghp", "<cmd>Gitsigns preview_hunk_inline<CR>", { desc = "Show hunk preview" })
+vim.keymap.set("n", "<leader>ghb", "<cmd>Gitsigns toggle_current_line_blame<CR>", { desc = "Toggle current line blame" })
+vim.keymap.set("n", "<leader>ghB", "<cmd>Gitsigns blame<CR>", { desc = "Toggle current buffer blame" })
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
