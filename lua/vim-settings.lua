@@ -100,6 +100,9 @@ vim.keymap.set("n", "<leader>ghp", "<cmd>Gitsigns preview_hunk_inline<CR>", { de
 vim.keymap.set("n", "<leader>ghb", "<cmd>Gitsigns toggle_current_line_blame<CR>", { desc = "Toggle current line blame" })
 vim.keymap.set("n", "<leader>ghB", "<cmd>Gitsigns blame<CR>", { desc = "Toggle current buffer blame" })
 
+-- Lazygit
+vim.keymap.set("n", "<leader>gl", "<cmd>LazyGit<CR>", { desc = "LazyGit" })
+
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
